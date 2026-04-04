@@ -18,10 +18,12 @@
         <lombok.version>1.18.44</lombok.version>
         <owner.version>1.0.8</owner.version>
         <javaFaker.version>1.0.2</javaFaker.version>
-        <allure.version>2.24.0</allure.version>
+        <allure.version>2.29.0</allure.version>
         <aspectj.version>1.9.20.1</aspectj.version>
         <awaitility.version>4.3.0</awaitility.version>
         <jayway.version>3.0.0</jayway.version>
+        <pico.version>7.34.2</pico.version>
+        <gherkin.version>39.0.0</gherkin.version>
     </properties>
 
     <dependencyManagement>
@@ -76,11 +78,6 @@
 
         <dependency>
             <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
             <artifactId>allure-rest-assured</artifactId>
         </dependency>
 
@@ -107,6 +104,29 @@
             <artifactId>cucumber-testng</artifactId>
             <version>${cucumber.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-cucumber7-jvm</artifactId>
+            <version>${allure.version}</version>
+        </dependency>
+
+<!--                <dependency>-->
+<!--                    <groupId>io.cucumber</groupId>-->
+<!--                    <artifactId>gherkin</artifactId>-->
+<!--                    <version>${gherkin.version}</version>-->
+<!--                </dependency>-->
     </dependencies>
 
     <build>
