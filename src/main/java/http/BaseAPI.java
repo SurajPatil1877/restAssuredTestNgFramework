@@ -1,9 +1,10 @@
 package http;
 
 import com.github.javafaker.Faker;
-import config.PropertyUil;
+import config.PropertyUtil;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
+import io.restassured.config.HttpClientConfig;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
@@ -14,6 +15,7 @@ import io.restassured.specification.RequestSpecification;
 import util.TestDataHelper;
 
 import java.time.format.DateTimeFormatter;
+import java.util.Map;
 
 
 public abstract class BaseAPI {
@@ -23,14 +25,25 @@ public abstract class BaseAPI {
     public final DateTimeFormatter ISO_DATE = DateTimeFormatter.ISO_DATE;
 
     public BaseAPI() {
+        HttpClientConfig httpClientConfig = HttpClientConfig.httpClientConfig()
+                                                            .setParams(Map.of("http.connection.timeout", PropertyUtil.getConfig().connectionTimeout(), "http.socket.timeout", PropertyUtil.getConfig().socketTimeout()));
+
         requestSpecification = RestAssured.given()
-                                          .baseUri(PropertyUil.getConfig().baseURL())
-                                          .filter(new AllureRestAssured());
+                                          .baseUri(PropertyUtil.getConfig().baseURL())
+                                          .filter(new AllureRestAssured())
+                                          .config(RestAssured.config()
+                                                             .and().httpClient(httpClientConfig));
     }
 
     protected BaseAPI setRequestBody(Object object) {
         this.requestSpecification.body(object);
         return this;
+    }
+
+    protected void setRedirect(boolean shouldFollowRedirect) {
+        this.requestSpecification.redirects()
+                                 .follow(shouldFollowRedirect)
+                                 .urlEncodingEnabled(false);
     }
 
     protected void setBasePath(String basePath) {

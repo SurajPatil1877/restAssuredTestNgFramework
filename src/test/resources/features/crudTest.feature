@@ -1,3 +1,4 @@
+@CRUD
 Feature: CRUD tests for restful booker
 
   Scenario: E2E  CRUD Scenario for Restful Booker APIs

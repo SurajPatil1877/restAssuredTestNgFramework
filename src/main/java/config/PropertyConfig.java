@@ -7,4 +7,10 @@ public interface PropertyConfig extends Config {
     @Key("baseUrl")
     String baseURL();
 
+    @Key("connection.timeout")
+    Integer connectionTimeout();
+
+    @Key("socket.timeout")
+    Integer socketTimeout();
+
 }

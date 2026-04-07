@@ -1,3 +1,4 @@
+@SimpleGetAPI
 Feature: Simple HTTP Get Call
 
   This is a simple example for HTTP Get with Cucumber

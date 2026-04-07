@@ -1,3 +1,4 @@
+@UpdateBooking
 Feature: Update an existing booking
   Create and update booking in same scenario
 

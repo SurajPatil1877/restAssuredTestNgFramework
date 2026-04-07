@@ -1,3 +1,4 @@
+@CreateBooking
 Feature: Create new bookings using DataTables
 
   Scenario: Create a new booking using DataTables as a List of Maps

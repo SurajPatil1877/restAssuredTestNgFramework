@@ -1,3 +1,4 @@
+@Delete
 Feature: Delete an existing booking
   Create and delete booking in same scenario
 
@@ -14,3 +15,4 @@ Feature: Delete an existing booking
     And Create booking API response has valid bookingId
     When bookingId has been saved in shared context
     And we send request to delete booking API
+    Then API Response should have HTTP Status code 201
